@@ -61,7 +61,7 @@ class MoviesRepo(context: Context) {
     }
 
     private fun loadPopularMovies(force: Boolean) {
-        if (force  && LAST_CALL_POPULAR > 0L && (System.currentTimeMillis() - LAST_CALL_TOP) < 60000){
+        if (!force  && LAST_CALL_POPULAR > 0L && (System.currentTimeMillis() - LAST_CALL_TOP) < 60000){
             return
         }
         moviesRemote.getPopularMovies(object: MovieSource.MovieSourceCallback {
